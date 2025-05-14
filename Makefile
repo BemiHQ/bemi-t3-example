@@ -2,7 +2,10 @@ sh:
 	devbox --env-file .env shell
 
 install:
-	devbox run "bun install"
+	rm -rf ./node_modules/@bemi-db && \
+	devbox run --env-file ./.env "bun install && bun prisma generate" && \
+	cd ../bemi-prisma && pnpm install && pnpm build && cd - && \
+	cp -r ../bemi-prisma/dist/* ./node_modules/@bemi-db/prisma/dist && cp ../bemi-prisma/package.json ./node_modules/@bemi-db/prisma/package.json
 
 migrate:
 	devbox run --env-file .env "bun run db:generate"
