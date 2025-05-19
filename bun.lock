@@ -4,7 +4,7 @@
     "": {
       "name": "bemi-t3-example",
       "dependencies": {
-        "@bemi-db/prisma": "^0.9.0",
+        "@bemi-db/prisma": "^1.1.0",
         "@prisma/client": "^6.7.0",
         "@t3-oss/env-nextjs": "^0.12.0",
         "@tanstack/react-query": "^5.69.0",
@@ -41,7 +41,7 @@
 
     "@ampproject/remapping": ["@ampproject/remapping@2.3.0", "", { "dependencies": { "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw=="],
 
-    "@bemi-db/prisma": ["@bemi-db/prisma@0.9.0", "", { "dependencies": { "@prisma/driver-adapter-utils": "~6.7.0", "commander": "^11.1.0", "kleur": "^4.1.5", "pg": "^8.14.1", "postgres-array": "^3.0.4" }, "peerDependencies": { "@prisma/client": "^6.7.0" }, "bin": { "bemi": "dist/cli.js" } }, "sha512-shJOgww6c2GHZ+yGU5CqcN8mdPaimSdjhKjU8nKgM2s/OQpKNAyONNBiI8HcYUhByyfQnR1M5wpjiS6aoRG/0Q=="],
+    "@bemi-db/prisma": ["@bemi-db/prisma@1.1.0", "", { "dependencies": { "@prisma/driver-adapter-utils": "~6.7.0", "commander": "^11.1.0", "kleur": "^4.1.5", "pg": "^8.14.1", "postgres-array": "^3.0.4" }, "peerDependencies": { "@prisma/client": "^6.7.0" }, "bin": { "bemi": "dist/cli.js" } }, "sha512-N8filbN/CsCq4gYx/iVEU7ppn9EWEvCNg3yVFpnsnWU/8WWJUJoCLCWBS6QcHcvk50jYHnhYeiZoTfNVZFmucQ=="],
 
     "@emnapi/core": ["@emnapi/core@1.4.3", "", { "dependencies": { "@emnapi/wasi-threads": "1.0.2", "tslib": "^2.4.0" } }, "sha512-4m62DuCE07lw01soJwPiBGC0nAww0Q+RY70VZ+n49yDIO13yyinhbWCeNnaob0lakDtWQzSdtNWzJeOJt2ma+g=="],
 

@@ -1,11 +1,12 @@
-import { withPgAdapter } from "@bemi-db/prisma";
+import { PrismaPg, withBemiExtension } from "@bemi-db/prisma";
 import { PrismaClient } from "@prisma/client";
 
 import { env } from "~/env";
 
 const createPrismaClient = () =>
-  withPgAdapter(
+  withBemiExtension(
     new PrismaClient({
+      adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }),
       log:
         env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
     }),

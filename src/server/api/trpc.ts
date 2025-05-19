@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument */
+
 /**
  * YOU PROBABLY DON'T NEED TO EDIT THIS FILE, UNLESS:
  * 1. You want to modify request context (see Part 1).
@@ -9,6 +11,7 @@
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
+import { bemiTRPCMiddleware } from "@bemi-db/prisma";
 
 import { db } from "~/server/db";
 
@@ -25,9 +28,22 @@ import { db } from "~/server/db";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await auth();
+
   return {
     db,
+    session,
     ...opts,
+  };
+};
+
+const auth = async () => {
+  return {
+    user: {
+      id: "123",
+      email: "john@example.com",
+      name: "John Doe",
+    },
   };
 };
 
@@ -96,6 +112,10 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   return result;
 });
 
+const bemiMiddleware = bemiTRPCMiddleware(t, ({ ctx }) => ({
+  userId: ctx.session?.user?.id,
+}));
+
 /**
  * Public (unauthenticated) procedure
  *
@@ -103,4 +123,6 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
  * guarantee that a user querying is authorized, but you can still access user session data if they
  * are logged in.
  */
-export const publicProcedure = t.procedure.use(timingMiddleware);
+export const publicProcedure = t.procedure
+  .use(timingMiddleware)
+  .use(bemiMiddleware);

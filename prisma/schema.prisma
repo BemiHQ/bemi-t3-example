@@ -8,10 +8,13 @@ generator client {
 
 datasource db {
     provider = "postgresql"
-    url      = env("SOURCE_DB_URI")
+    url      = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
 }
 
 model Post {
+    @@map("po-st")
+
     id        Int      @id @default(autoincrement())
     name      String
     createdAt DateTime @default(now())

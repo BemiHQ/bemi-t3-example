@@ -1,12 +1,12 @@
 -- CreateTable
-CREATE TABLE "Post" (
+CREATE TABLE "po-st" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "po-st_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE INDEX "Post_name_idx" ON "Post"("name");
+CREATE INDEX "po-st_name_idx" ON "po-st"("name");
